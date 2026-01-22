@@ -1,0 +1,221 @@
+/* GLOBAL STYLES */
+body {
+  font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+  background-color: var(--bg);
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+.game-container {
+  background-color: var(--container-bg);
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 420px;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* SETUP SCREEN */
+.setup {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.setup label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: var(--text);
+  width: 100%;
+  text-align: left;
+}
+
+.setup input {
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.setup button {
+  padding: 12px 25px;
+  background-color: var(--button-bg);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+}
+
+.setup button:hover {
+  background-color: var(--button-hover);
+}
+
+/* GAME SETTINGS */
+.settings {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.settings label {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.settings select {
+  padding: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+#status {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text);
+  margin: 15px 0;
+  min-height: 1.5em;
+}
+
+/* GAME GRID */
+#grid {
+  display: grid;
+  gap: 12px;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.cell {
+  aspect-ratio: 1;
+  background-color: var(--cell-bg);
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  font-size: clamp(24px, 8vw, 48px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.3s ease;
+}
+
+.cell:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cell.X { color: var(--x-color); }
+.cell.O { color: var(--o-color); }
+
+/* MOVE STATES */
+.selected {
+  outline: 4px solid var(--selected-outline);
+  outline-offset: -4px;
+  transform: scale(0.95);
+}
+
+.valid {
+  background-color: var(--valid-bg);
+  border: 2px dashed var(--valid-border);
+}
+
+.win {
+  background-color: var(--win-bg) !important;
+  box-shadow: 0 0 20px var(--win-shadow);
+  color: var(--win-text) !important;
+}
+
+/* CONTROLS */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+#resetBtn, #undoBtn, #playAgainBtn, #newSessionBtn,#applySizeBtn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  background-color: var(--button-bg);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#resetBtn:hover, #undoBtn:hover, #playAgainBtn:hover, #newSessionBtn:hover {
+  background-color: var(--button-hover);
+}
+
+#themeBtn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  background-color: var(--button-bg);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+/* THEME VARIABLES */
+:root {
+  --bg: #a8d0e6;
+  --container-bg: #f0f8ff;
+  --text: #0d3b66;
+  --button-bg: #1e6091;
+  --button-hover: #0d3b66;
+  --cell-bg: #d0e7f9;
+  --x-color: #05445e;
+  --o-color: #189ad3;
+  --selected-outline: #38bdf8;
+  --valid-bg: #d4edda;
+  --valid-border: #87dc9b;
+  --win-bg: #00ffcc;
+  --win-shadow: rgba(0, 255, 204, 0.6);
+  --win-text: #0d3b66;
+}
+
+.dark-mode {
+  --bg: #0f172a;
+  --container-bg: #1e293b;
+  --text: #e2e8f0;
+  --button-bg: #3b82f6;
+  --button-hover: #2563eb;
+  --cell-bg: #334155;
+  --x-color: #7dd3fc;
+  --o-color: #93c5fd;
+  --selected-outline: #38bdf8;
+  --valid-bg: #1e3a8a;
+  --valid-border: #3b82f6;
+  --win-bg: #10b981;
+  --win-shadow: rgba(16, 185, 129, 0.5);
+  --win-text: #ffffff;
+}
